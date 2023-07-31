@@ -88,15 +88,7 @@ window.addEventListener('DOMContentLoaded', (event) =>{
             this.x = 0
             this.y = 0
             this.blocks = []
-        //     for(let eachRow = 0; eachRow < gridRows; eachRow++){
-        // for(let eachCol = 0; eachCol < gridCols; eachCol++){
-        //     let arrayIndex = eachRow * gridRows + eachCol;
-        //     if(map[arrayIndex] === 0){
-        //         ctx.fillStyle = 'lightblue';
-        //         ctx.fillRect(tileW * eachCol, tileH * eachRow, tileW, tileH)
-        //     }else{
-                    
-        //     }
+
             for(let eachRow = 0; eachRow < gridRows; eachRow++){
                 for(let eachCol = 0; eachCol < gridCols; eachCol++){
                     let arrayIndex = eachRow * gridRows + eachCol;
@@ -169,12 +161,12 @@ window.addEventListener('DOMContentLoaded', (event) =>{
     }
 
     let board = new Grid(70,70, "blue")
-    let smith = new Agent(board, "white")
+    let player = new Agent(board, "white")
    
     window.setInterval(function(){ 
 
         board.draw()
-        smith.draw()
+        player.draw()
     }, 140) 
 
     
