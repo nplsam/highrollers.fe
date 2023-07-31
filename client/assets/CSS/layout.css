@@ -47,6 +47,10 @@ main {
     justify-content: center;
 }
 
+img {
+    width: 600px;
+}
+
 #btn-container {
     display: flex;
     flex-direction: column;
