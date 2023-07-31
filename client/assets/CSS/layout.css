@@ -86,6 +86,10 @@ footer li a {
     text-decoration: none;
 }
 
+footer li a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
 footer li a:visited {
     text-decoration: none;
     color: #FFFDF8;
