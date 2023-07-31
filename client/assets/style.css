@@ -1,0 +1,9 @@
+canvas {
+    outline: black solid 1px;
+}
+
+#canvasContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
