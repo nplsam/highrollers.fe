@@ -20,7 +20,7 @@ header {
 
 h1 {
     font-family: 'Luckiest Guy', cursive;
-    font-size: 5rem;
+    font-size: 8rem;
     margin: 0;
 }
 
@@ -53,7 +53,7 @@ main {
     background-color: #FF6B35;
     font-family: 'Luckiest Guy', cursive;
     color: #FFFDF8;
-    font-size: 2.5rem;
+    font-size: 4rem;
 }
 
 footer {
