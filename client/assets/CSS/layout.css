@@ -65,6 +65,10 @@ main {
     font-size: 4rem;
 }
 
+.btn:hover {
+    background-color: #DD1C1A;
+}
+
 footer {
     width: 100%;
     display: flex;
