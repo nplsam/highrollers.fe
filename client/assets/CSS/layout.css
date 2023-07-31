@@ -8,10 +8,18 @@ body {
 }
 
 header {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #004E89;
+    color: #FFFDF8;
+}
+
+h1 {
+    font-size: 5rem;
+    margin: 0;
 }
 
 main {
