@@ -64,7 +64,9 @@ footer {
     justify-content: center;
     background-color: #004E89;
     color: #FFFDF8;
-    padding: 10px;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    font-size: 1.5rem;
 }
 
 footer ul {
@@ -74,7 +76,16 @@ footer ul {
 
 footer li {
     display: inline-block;
+    padding-top: 10px;
     padding-left: 50px;
     padding-right: 50px;
-    padding-top: 15px;
+}
+
+footer li a {
+    text-decoration: none;
+}
+
+footer li a:visited {
+    text-decoration: none;
+    color: #FFFDF8;
 }
