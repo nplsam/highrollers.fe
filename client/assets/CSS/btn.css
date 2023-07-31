@@ -1,0 +1,15 @@
+.btn {
+    border-radius: 15px;
+    border: none;
+    width: 30rem;
+    height: 6rem;
+    margin: 2rem;
+    background-color: #FF6B35;
+    font-family: 'Luckiest Guy', cursive;
+    color: #FFFDF8;
+    font-size: 4rem;
+}
+
+.btn:hover {
+    background-color: #DD1C1A;
+}
