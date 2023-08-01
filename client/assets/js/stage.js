@@ -1,34 +1,31 @@
 const rollDice = require('./dice');
 
-window.addEventListener('DOMContentLoaded', (event) =>{
-
+window.addEventListener('DOMContentLoaded', (event) => {
     let map = [
-        0,0,0,0,0,0,0,0,0,0,
-        0,1,1,1,1,1,1,1,1,0,
-        0,1,1,1,1,1,1,1,1,0,
-        0,1,1,1,1,1,1,1,1,0,
-        0,1,1,1,1,1,1,1,1,0,
-        0,1,1,1,1,1,1,1,1,0,
-        0,1,1,1,1,1,1,1,1,0,
-        0,1,1,1,1,1,1,1,1,0,
-        0,1,1,1,1,1,1,1,1,0,
-        0,0,0,0,0,0,0,0,0,0,
-        ]
+        "../Images/top-left-corner.png", "../Images/top-row.png", "../Images/top-row.png", "../Images/top-row.png", "../Images/top-row.png", "../Images/top-row.png", "../Images/top-row.png", "../Images/top-row.png", "../Images/top-row.png", "../Images/top-right-corner.png",
+        "../Images/left-column.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/right-column.png",
+        "../Images/left-column.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/right-column.png",
+        "../Images/left-column.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/right-column.png",
+        "../Images/left-column.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/right-column.png",
+        "../Images/left-column.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/right-column.png",
+        "../Images/left-column.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/right-column.png",
+        "../Images/left-column.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/right-column.png",
+        "../Images/left-column.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/center.png", "../Images/right-column.png",
+        "../Images/bottom-left-corner.png", "../Images/bottom-row.png", "../Images/bottom-row.png", "../Images/bottom-row.png", "../Images/bottom-row.png", "../Images/bottom-row.png", "../Images/bottom-row.png", "../Images/bottom-row.png", "../Images/bottom-row.png", "../Images/bottom-right-corner.png",
+    ]
 
-        
     const gridRows = 10;
     const gridCols = 10;
 
-    
     let keysPressed = {}
 
     document.addEventListener('keydown', (event) => {
         keysPressed[event.key] = true;
-     });
-     
-     document.addEventListener('keyup', (event) => {
-         delete keysPressed[event.key];
-      });
+    });
+
+    document.addEventListener('keyup', (event) => {
+        delete keysPressed[event.key];
+    });
 
     let tutorial_canvas = document.getElementById("gameCanvas");
     let tutorial_canvas_context = tutorial_canvas.getContext('2d');
@@ -37,29 +34,37 @@ window.addEventListener('DOMContentLoaded', (event) =>{
 
 
     class Rectangle {
-        constructor(x, y, height, width, color) {
+        constructor(x, y, height, width, imgUrl) {
             this.x = x
             this.y = y
             this.height = height
             this.width = width
-            this.color = color
             this.xmom = 0
             this.ymom = 0
+            this.isImageLoaded = false
+
+            this.img = new Image();
+            this.img.onload = () => {
+                this.isImageLoaded = true;
+            };
+            this.img.src = imgUrl;
         }
-        draw(){
-            tutorial_canvas_context.lineWidth = 1
+        draw() {
+            tutorial_canvas_context.lineWidth = 0.1
             tutorial_canvas_context.fillStyle = this.color
             tutorial_canvas_context.strokeStyle = "black"
-            tutorial_canvas_context.fillRect(this.x, this.y, this.width, this.height)
+            if (this.isImageLoaded) {
+                tutorial_canvas_context.drawImage(this.img, this.x, this.y, this.width, this.height)
+            }
             tutorial_canvas_context.strokeRect(this.x, this.y, this.width, this.height)
         }
-        move(){
-            this.x+=this.xmom
-            this.y+=this.ymom
+        move() {
+            this.x += this.xmom
+            this.y += this.ymom
         }
     }
-    class Circle{
-        constructor(x, y, radius, color, xmom = 0, ymom = 0){
+    class Circle {
+        constructor(x, y, radius, color, xmom = 0, ymom = 0) {
             this.x = x
             this.y = y
             this.radius = radius
@@ -67,74 +72,73 @@ window.addEventListener('DOMContentLoaded', (event) =>{
             this.xmom = xmom
             this.ymom = ymom
             this.lens = 0
-        }       
-         draw(){
+        }
+        draw() {
             tutorial_canvas_context.lineWidth = 0
             tutorial_canvas_context.strokeStyle = this.color
             tutorial_canvas_context.beginPath();
-            tutorial_canvas_context.arc(this.x, this.y, this.radius, 0, (Math.PI*2), true)
+            tutorial_canvas_context.arc(this.x, this.y, this.radius, 0, (Math.PI * 2), true)
             tutorial_canvas_context.fillStyle = this.color
-           tutorial_canvas_context.fill()
-            tutorial_canvas_context.stroke(); 
+            tutorial_canvas_context.fill()
+            tutorial_canvas_context.stroke();
         }
-        move(){
+        move() {
             this.x += this.xmom
             this.y += this.ymom
         }
     }
 
-    class Grid{
-        constructor(width, height, color){
+    class Grid {
+        constructor(width, height, color) {
             this.width = width
             this.height = height
             this.x = 0
             this.y = 0
             this.blocks = []
 
-            for(let eachRow = 0; eachRow < gridRows; eachRow++){
-                for(let eachCol = 0; eachCol < gridCols; eachCol++){
+            for (let eachRow = 0; eachRow < gridRows; eachRow++) {
+                for (let eachCol = 0; eachCol < gridCols; eachCol++) {
                     let arrayIndex = eachRow * gridRows + eachCol;
-                    let block;
-                    if(map[arrayIndex] === 0){
-                       block = new Rectangle(this.x, this.y, this.height, this.width, color)
-                    }else{
-                     block = new Rectangle(this.x, this.y, this.height, this.width, "red")
+                    const imgUrl = map[arrayIndex];
+
+                    if (imgUrl) {
+                        let block = new Rectangle(this.x, this.y, this.height, this.width, imgUrl)
+                        this.blocks.push(block)
                     }
-                    this.blocks.push(block)
-                    this.x+=this.width
+                    this.x += this.width
                 }
-                this.y+=this.height
+                this.y += this.height
                 this.x = 0
             }
 
         }
-        draw(){
-            for(let b = 0; b<this.blocks.length; b++){
+        draw() {
+            for (let b = 0; b < this.blocks.length; b++) {
                 this.blocks[b].draw()
             }
         }
     }
 
-    class Agent{
-        constructor(grid, color){
+    class Agent {
+        constructor(grid, color) {
             this.grid = grid
-            this.body = new Circle(10,10,Math.min(this.grid.width/4, this.grid.height/4), color)
-            this.location = this.grid.blocks[Math.floor(Math.random()*this.grid.blocks.length)]
+            this.body = new Circle(10, 10, Math.min(this.grid.width / 4, this.grid.height / 4), color)
+            this.location = this.grid.blocks[Math.floor(Math.random() * this.grid.blocks.length)]
             this.boardCount = 0;
             this.moves = 0;
         }
-        draw(){
+        draw() {
             this.control()
-            this.body.x = this.location.x + this.location.width/2
-            this.body.y = this.location.y + this.location.height/2
+            this.body.x = this.location.x + this.location.width / 2
+            this.body.y = this.location.y + this.location.height / 2
             this.body.draw()
         }
-        control(){
-            if(keysPressed['w'] && this.moves >= 1){
+        control() {
+            if (keysPressed['w'] && this.moves >= 1) {
                 console.log('working');
                 console.log(this.boardCount);
-                switch(true){
-                    case this.boardCount <= 8: 
+                switch (true) {
+                    case this.boardCount <= 8:
                         console.log('working board eval');
                         this.body.x += this.grid.width
                         this.boardCount++;
@@ -157,42 +161,42 @@ window.addEventListener('DOMContentLoaded', (event) =>{
                         this.body.y -= this.grid.height;
                         this.boardCount++;
                         this.moves--;
-                        break;         
+                        break;
                 }
             }
-                
-                for(let g = 0;g<this.grid.blocks.length; g++){
-                    if(this.body.x > this.grid.blocks[g].x){
-                        if(this.body.y > this.grid.blocks[g].y){
-                            if(this.body.x < this.grid.blocks[g].x+this.grid.blocks[g].width){
-                                if(this.body.y < this.grid.blocks[g].y+this.grid.blocks[g].height){
-                                    if(this.grid.blocks[g].color != "red"){
-                                        this.location = this.grid.blocks[g]
-                                    }
-                                }  
-                            }  
+
+            for (let g = 0; g < this.grid.blocks.length; g++) {
+                if (this.body.x > this.grid.blocks[g].x) {
+                    if (this.body.y > this.grid.blocks[g].y) {
+                        if (this.body.x < this.grid.blocks[g].x + this.grid.blocks[g].width) {
+                            if (this.body.y < this.grid.blocks[g].y + this.grid.blocks[g].height) {
+                                if (this.grid.blocks[g].color != "red") {
+                                    this.location = this.grid.blocks[g]
+                                }
+                            }
                         }
                     }
-    
-    
                 }
+
+
             }
-
-
-
         }
 
-    
 
-    let board = new Grid(70,70, "blue")
+
+    }
+
+
+
+    let board = new Grid(57, 57, "blue")
     let player = new Agent(board, "white")
 
-   
-    window.setInterval(function(){ 
+
+    window.setInterval(function () {
 
         board.draw()
         player.draw()
-    }, 140) 
+    }, 140)
 
 
     const diceBtn = document.getElementById('dice-btn');
