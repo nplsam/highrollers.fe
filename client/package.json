@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "watchify": "^4.0.0"
+  }
+}
