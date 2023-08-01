@@ -11,21 +11,6 @@ module.exports = rollDice;
 },{}],2:[function(require,module,exports){
 const rollDice = require('./dice');
 
-
-
-const diceBtn = document.getElementById('dice-btn');
-const diceResult = document.getElementById('diceResult');
-
-diceBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const dice1 = rollDice();
-    const dice2 = rollDice();
-
-    diceResult.textContent = `The first dice is ${dice1} and the second is ${dice2}`;
-    console.log(dice1, dice2);
-})
-
-
 window.addEventListener('DOMContentLoaded', (event) =>{
 
     let map = [
@@ -146,6 +131,8 @@ window.addEventListener('DOMContentLoaded', (event) =>{
             this.grid = grid
             this.body = new Circle(10,10,Math.min(this.grid.width/4, this.grid.height/4), color)
             this.location = this.grid.blocks[Math.floor(Math.random()*this.grid.blocks.length)]
+            this.boardCount = 0;
+            this.moves = 0;
         }
         draw(){
             this.control()
@@ -154,42 +141,63 @@ window.addEventListener('DOMContentLoaded', (event) =>{
             this.body.draw()
         }
         control(){
-            if(keysPressed['w']){
-                this.body.y -= this.grid.height
-            }
-            if(keysPressed['a']){
-                this.body.x -= this.grid.width
-            }
-            if(keysPressed['s']){
-                this.body.y += this.grid.height
-            }
-            if(keysPressed['d']){
-                this.body.x += this.grid.width
-            }
-
-            for(let g = 0;g<this.grid.blocks.length; g++){
-                if(this.body.x > this.grid.blocks[g].x){
-                    if(this.body.y > this.grid.blocks[g].y){
-                        if(this.body.x < this.grid.blocks[g].x+this.grid.blocks[g].width){
-                            if(this.body.y < this.grid.blocks[g].y+this.grid.blocks[g].height){
-                                if(this.grid.blocks[g].color != "red"){
-                                    this.location = this.grid.blocks[g]
-                                }
-                            }  
-                        }  
-                    }
+            if(keysPressed['w'] && this.moves >= 1){
+                console.log('working');
+                console.log(this.boardCount);
+                switch(true){
+                    case this.boardCount <= 8: 
+                        console.log('working board eval');
+                        this.body.x += this.grid.width
+                        this.boardCount++;
+                        this.moves--;
+                        break;
+                    case this.boardCount <= 17:
+                        console.log('working board eval 2');
+                        this.body.y += this.grid.height;
+                        this.boardCount++;
+                        this.moves--;
+                        break;
+                    case this.boardCount <= 26:
+                        console.log('working board eval 3');
+                        this.body.x -= this.grid.width
+                        this.boardCount++;
+                        this.moves--;
+                        break;
+                    case this.boardCount <= 35:
+                        console.log('working board eval 4');
+                        this.body.y -= this.grid.height;
+                        this.boardCount++;
+                        this.moves--;
+                        break;         
                 }
-
-
             }
+                
+                for(let g = 0;g<this.grid.blocks.length; g++){
+                    if(this.body.x > this.grid.blocks[g].x){
+                        if(this.body.y > this.grid.blocks[g].y){
+                            if(this.body.x < this.grid.blocks[g].x+this.grid.blocks[g].width){
+                                if(this.body.y < this.grid.blocks[g].y+this.grid.blocks[g].height){
+                                    if(this.grid.blocks[g].color != "red"){
+                                        this.location = this.grid.blocks[g]
+                                    }
+                                }  
+                            }  
+                        }
+                    }
+    
+    
+                }
+            }
+
 
 
         }
 
-    }
+    
 
     let board = new Grid(70,70, "blue")
     let player = new Agent(board, "white")
+
    
     window.setInterval(function(){ 
 
@@ -197,6 +205,20 @@ window.addEventListener('DOMContentLoaded', (event) =>{
         player.draw()
     }, 140) 
 
-    
+
+    const diceBtn = document.getElementById('dice-btn');
+    const diceResult = document.getElementById('diceResult');
+
+    diceBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const dice1 = rollDice();
+        const dice2 = rollDice();
+        player.moves = dice1;
+
+        diceResult.textContent = `The first dice is ${dice1} and the second is ${dice2}`;
+        console.log(dice1, dice2);
+    })
+
+
 })
 },{"./dice":1}]},{},[2]);
