@@ -195,7 +195,7 @@ window.addEventListener('DOMContentLoaded', (event) =>{
     }, 140) 
 
 
-    const diceBtn = document.getElementById('dice-btn');
+    const diceBtn = document.getElementsByClassName('btn');
     const diceResult = document.getElementById('diceResult');
 
     diceBtn.addEventListener('click', (e) => {
