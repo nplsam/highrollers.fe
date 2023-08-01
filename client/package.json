@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "dev": "watchify assets/stage.js -o bundle.js"
+  },
   "devDependencies": {
     "watchify": "^4.0.0"
   }
