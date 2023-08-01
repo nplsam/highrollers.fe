@@ -1,3 +1,20 @@
+const rollDice = require('./dice');
+
+
+
+const diceBtn = document.getElementById('dice-btn');
+const diceResult = document.getElementById('diceResult');
+
+diceBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const dice1 = rollDice();
+    const dice2 = rollDice();
+
+    diceResult.textContent = `The first dice is ${dice1} and the second is ${dice2}`;
+    console.log(dice1, dice2);
+})
+
+
 window.addEventListener('DOMContentLoaded', (event) =>{
 
     let map = [

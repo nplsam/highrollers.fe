@@ -7,3 +7,10 @@ canvas {
     justify-content: center;
     align-items: center;
 }
+
+#diceSection {
+    margin-top: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
