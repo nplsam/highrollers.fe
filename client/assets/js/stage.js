@@ -182,12 +182,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
             }
         }
-
-
-
     }
-
-
 
     let board = new Grid(57, 57, "blue")
     let player = new Agent(board, "white")
@@ -199,13 +194,46 @@ window.addEventListener('DOMContentLoaded', (event) => {
         player.draw()
     }, 140)
 
+    function displayQuestionModal(image, correctCountry) {
+        const modal = document.getElementById("myModal");
+        const questionElement = document.getElementById("question");
+        const questionImageElement = document.getElementById("questionImage");
+        const submitBtn = document.getElementById("submitAnswer");
+        const closeBtn = document.getElementsByClassName("close")[0];
+    
+        questionElement.textContent = `Guess the country based on the image:`
+        questionImageElement.src = image
+    
+        modal.style.display = "block";
+    
+        closeBtn.onclick = function () {
+            modal.style.display = "none";
+        };
+    
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
+    
+        submitBtn.onclick = function () {
+            const answerInput = document.getElementById("answer");
+            const answer = answerInput.value.trim().toLowerCase();
+            if (answer === correctCountry.toLowerCase()) {
+                modal.style.display = "Correct, you stay at this position!";
+            } else {
+                modal.style.display = "Incorrect, move back to your previous position!";
+                resetPlayer();
+            }
+            answerInput.value = "";
+        };
+    }
 
     function rollDice() {
         return Math.floor(Math.random() * 6) + 1;
     }
 
     const diceBtn = document.getElementById('dice-btn');
-    const diceResult = document.getElementById('diceResult');
     const moveDice = document.getElementById('moveDice');
     const diffDice = document.getElementById('diffDice');
 
@@ -220,11 +248,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         e.preventDefault();
         const dice1 = rollDice();
         const dice2 = rollDice();
-        
-
-        
-
-        // diceResult.textContent = `The first dice is ${dice1} and the second is ${dice2}`;
+        let questionType = "";
         
         setTimeout(function(){
             moveDice.classList.remove('spin-dice');
@@ -254,8 +278,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 case 6:
                     moveDice.classList.add('six-dice');
                     player.moves = dice1;
-                    break;
-                
+                    break;    
             }
             switch(dice2){
                 case 1:
@@ -275,16 +298,43 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     break;
                 case 6:
                     diffDice.classList.add('six-dice');
-                    break;
-                
+                    break;     
             }
-        },1000)
+            switch (dice2) {
+                case 1:
+                case 2:
+                    questionType = "easy";
+                    break;
+                case 3:
+                case 4:
+                    questionType = "medium";
+                    break;
+                case 5:
+                case 6:
+                    questionType = "hard";
+                    break;
+                default:
+                    console.error("Invalid dice value");
+                    return;
+            }
 
-        
-        
+            fetch(`http://localhost:3000/countries/random/${questionType}`)
+            .then((response) => { 
+                if(!response.ok) {
+                    throw new Error("Network response was not ok")
+                }
+                return response.json()
+            })
+            .then((data) => {
+                 const image = data.imageUrl;
+                 const correctCountry = data.country;
+                 displayQuestionModal(image, correctCountry);
+            })
+            .catch((error) => {
+                console.error("Error fetching question: ", error)
+            });
 
-
-        
-
-    })
+    }, 2000)
+});
 })
+
