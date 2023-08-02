@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game</title>
-    <script defer src="../../bundle.js"></script>
+    <script defer src="../js/stage.js"></script>
     <script src="https://kit.fontawesome.com/2d69e80447.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/client/assets/CSS/style.css">
     <link rel="shortcut icon" href="/client/assets/Logo.png" type="image/x-icon">
@@ -19,7 +19,12 @@
             <canvas height="570" width="570" id="gameCanvas"></canvas>
         </section>
         <section id="diceSection">
-            <canvas height="64" width="128" id="diceCanvas"></canvas>
+            <div class="diceContainer">
+                <img class="" src="../Images/move_dice.png" id="moveDice"/>
+            </div>
+            <div class="diceContainer">
+                <img class="" src="../Images/diff_dice.png" id="diffDice"/>
+            </div>
             <button role="dice" id="dice-btn">Roll the Dice!</button>
             <h4 id="diceResult">The result will be displayed here.</h4>
         </section>
