@@ -5,17 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="shortcut icon" href="./assets/Logo.png" type="image/x-icon">
-    <script src="https://kit.fontawesome.com/2d69e80447.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/CSS/style.css">
+    <script src="https://kit.fontawesome.com/2d69e80447.js" crossorigin="anonymous"></script>
     <script defer src="./assets/js/index.js"></script>
 </head>
 <body>
     <header>
         <h1>High Rollers</h1>
-        <nav>
-            ABOUT
-        </nav>
     </header>
 
     <main>
@@ -24,19 +21,19 @@
         </div>
 
         <div id="btn-container">
-            <button class="btn">Start</button>
-            <button class="btn" id="settings" data-bs-toggle="modal" data-bs-target="#settingsModal">Settings</button>
+            <a href="/client/assets/html/game.html">
+              <button class="btn">Start</button>
+            </a>
             <button class="btn" id="howTo" data-bs-toggle="modal" data-bs-target="#howToModal">How To</button>
+            <button class="btn" id="about" data-bs-toggle="modal" data-bs-target="#aboutModal">About</button>
         </div>
-        
-        
-
     </main>
+    
     <div class="modal fade" id="howToModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5 just" id="exampleModalLabel">How to play!</h1>
+              <h1 class="modal-title fs-5 text-center" id="howToModal">How to Play</h1>
             </div>
             <div class="modal-body">
                 <div class="accordion" id="accordionExample">
@@ -96,23 +93,94 @@
           </div>
         </div>
       </div>
-    <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+    <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="settingsModalLabel">Settings:</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h1 class="modal-title fs-5 text-center" id="aboutModalLabel">Welcome to High Rollers - The Exciting World of Geography</h1>
             </div>
             <div class="modal-body">
-                <div class="form-check form-switch">
-                    <label class="form-check-label" for="darkTheme">Dark Theme</label>
-                    <input class="form-check-input" type="checkbox" role="switch" id="darkTheme">
+              
+              <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        What the game is about:
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <p>
+                          At High Rollers, our mission is to encourage students to embrace the fascinating realm of Geography by making the learning process interactive, immersive, and, most importantly, fun!
+                        </p>
+                        We recognized the challenge of declining interest in non-STEM subjects and wanted to create a solution that not only educates but also entertains. Our board game is designed to instill a sense of curiosity and adventure in students, making them eager to explore the fascinating world of Geography.
+                      </div>
+                    </div>
                   </div>
-                <div class="form-check form-switch">
-                    <label class="form-check-label" for="music">Music</label>
-                    <input class="form-check-input" type="checkbox" role="switch" id="music">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      How we built it:
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      We built High Rollers from the collaborative efforts of our passionate three member team. By combining our expertise in education, game design, and technology, we brought the game to life using HTML, CSS, and JS to create an interactive and visually appealing web-based application. 
+                    </div>
+                  </div>
                 </div>
-                
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      What technologies we used:
+                    </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p>
+                        High Rollers owes its existence to the latest web technologies, as we harnessed their flexibility and interactivity to create a captivating gaming experience:
+                      </p>
+                      <ul>
+                        <li>
+                          <strong>HTML:</strong> Provided the backbone for structuring the game harnessed the the game's user interface, ensuring a seamless experience for players.
+                        </li>
+                        <li>
+                          <strong>CSS:</strong> Brought life to the game with visually stunning designs, vibrant colors, and an intuitive layout, making it an eye-catching and enjoyable experience.
+                        </li>
+                        <li>
+                          <strong>JavaScript:</strong> Enabled us to create interactive elements, engaging gameplay mechanics, and dynamic functionalities, making learning an exciting adventure.
+                        </li>
+                        <li>
+                          <strong>Express JS:</strong> Allowed us to build a powerful API to efficiently manage and retrive images required to enrich the game.
+                        </li>
+                      </ul>
+                        By leveraging the capabilities of these technologies, we were able to create an accessible and responsive game.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        How we could develop it further:
+                      </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <p>
+                          While we are thrilled with the success of High Rollers, we believe that there's always room for improvement and growth. As we look to the future, we envision expanding the game's reach and accessibility.
+                        </p>
+                        <ol>
+                          <li>
+                            Mobile Version: We are actively exploring the possibility of developing a mobile version of High Rollers. This will enable students to dive into the world of Geography anytime, anywhere, making learning a part of their daily lives.
+                          </li>
+                          <li>
+                            Educational Content Updates: We aim to continuously update the game with fresh educational content, ensuring that students learn about the latest discoveries, global events, and advancements in geographical knowledge.
+                          </li>
+                        </ol>
+                      </div>
+                    </div>
+                  </div>
+              </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -120,8 +188,7 @@
           </div>
         </div>
       </div>
-      
-      
+    
     <footer>
         <p>
             High Rollers 2023<i class="fa-regular fa-copyright" style="color: #FFFDF8;"></i>
