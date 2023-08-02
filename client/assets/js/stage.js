@@ -1,4 +1,5 @@
-const rollDice = require('./dice');
+// const rollDice = require('./dice');
+
 
 window.addEventListener('DOMContentLoaded', (event) => {
     let map = [
@@ -199,17 +200,84 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }, 140)
 
 
+    function rollDice() {
+        return Math.floor(Math.random() * 6) + 1;
+    }
+
     const diceBtn = document.getElementById('dice-btn');
     const diceResult = document.getElementById('diceResult');
+    const moveDice = document.getElementById('moveDice');
+    const diffDice = document.getElementById('diffDice');
 
     diceBtn.addEventListener('click', (e) => {
+
+        moveDice.className = '';
+        diffDice.className = '';
+
+        moveDice.classList.add('spin-dice');
+        diffDice.classList.add('spin-dice');
+
         e.preventDefault();
         const dice1 = rollDice();
         const dice2 = rollDice();
         player.moves = dice1;
 
+        
+
         diceResult.textContent = `The first dice is ${dice1} and the second is ${dice2}`;
-        console.log(dice1, dice2);
+        
+        setTimeout(function(){
+            moveDice.classList.remove('spin-dice');
+            diffDice.classList.remove('spin-dice');
+
+            switch(dice1){
+                case 1:
+                    moveDice.classList.add('one-dice');
+                    break;
+                case 2:
+                    moveDice.classList.add('two-dice');
+                    break;
+                case 3:
+                    moveDice.classList.add('three-dice');
+                    break;
+                case 4:
+                    moveDice.classList.add('four-dice');
+                    break;
+                case 5:
+                    moveDice.classList.add('five-dice');
+                    break;
+                case 6:
+                    moveDice.classList.add('six-dice');
+                    break;
+                
+            }
+            switch(dice2){
+                case 1:
+                    diffDice.classList.add('one-dice');
+                    break;
+                case 2:
+                    diffDice.classList.add('two-dice');
+                    break;
+                case 3:
+                    diffDice.classList.add('three-dice');
+                    break;
+                case 4:
+                    diffDice.classList.add('four-dice');
+                    break;
+                case 5:
+                    diffDice.classList.add('five-dice');
+                    break;
+                case 6:
+                    diffDice.classList.add('six-dice');
+                    break;
+                
+            }
+        },1000)
+        
+
+
+        
+
     })
 
 
