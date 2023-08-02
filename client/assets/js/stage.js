@@ -229,7 +229,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         setTimeout(function(){
             moveDice.classList.remove('spin-dice');
             diffDice.classList.remove('spin-dice');
-
+            
             switch(dice1){
                 case 1:
                     moveDice.classList.add('one-dice');
