@@ -185,22 +185,22 @@ window.addEventListener('DOMContentLoaded', (event) => {
         revert(){    
             console.log(this.boardCount);
                 switch (true) {
-                    case this.boardCount <= 8:
+                    case this.boardCount <= 9:
                         console.log('working board eval');
                         this.body.x -= this.grid.width
                         this.boardCount--;
                         break;
-                    case this.boardCount <= 17:
+                    case this.boardCount <= 18:
                         console.log('working board eval 2');
                         this.body.y -= this.grid.height;
                         this.boardCount--;
                         break;
-                    case this.boardCount <= 26:
+                    case this.boardCount <= 27:
                         console.log('working board eval 3');
                         this.body.x += this.grid.width
                         this.boardCount--;
                         break;
-                    case this.boardCount <= 35:
+                    case this.boardCount <= 36:
                         console.log('working board eval 4');
                         this.body.y += this.grid.height;
                         this.boardCount--;
