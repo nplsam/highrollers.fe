@@ -1,0 +1,17 @@
+canvas {
+    outline: black solid 1px;
+}
+
+#canvasContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#diceSection {
+    margin-top: 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
