@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^5.3.1",
     "concurrently": "^8.2.0",
     "live-server": "^1.2.2",
     "watchify": "^4.0.0"

@@ -1,6 +1,6 @@
 const rollDice = require('./dice');
 
-window.addEventListener('DOMContentLoaded', (event) =>{
+window.addEventListener('DOMContentLoaded', (event) => {
 
     let map = [
         0,0,0,0,0,0,0,0,0,0,
