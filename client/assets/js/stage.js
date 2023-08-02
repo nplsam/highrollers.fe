@@ -1,4 +1,5 @@
 const rollDice = require('./dice');
+const animate = require('./animations');
 
 window.addEventListener('DOMContentLoaded', (event) => {
     let map = [
