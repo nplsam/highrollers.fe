@@ -1,5 +1,14 @@
+// // FUNCTION TO SIMULATE ROLLING A DICE
 function rollDice() {
     return Math.floor(Math.random() * 6) + 1;
 }
 
-module.exports = rollDice;
+// FUNCTION TO MOVE THE PLAYER ON THE BOARD
+function movePlayer(targetPosition) {
+    playerPosition = targetPosition
+}
+
+module.exports = {
+    rollDice,
+    movePlayer
+}
