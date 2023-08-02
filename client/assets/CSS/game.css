@@ -9,9 +9,21 @@ canvas {
 }
 
 #diceSection {
-    margin-top: 3%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    outline: solid #FF6B35;
+    padding: 50px;
+    margin: 10px 10px;
+    border-radius: 15px;
 }
+
+#dice {
+    display: flex;
+}
+
+.diceContainer {
+    margin: 20px;
+}
+
