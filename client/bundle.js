@@ -26,13 +26,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     let keysPressed = {}
 
-    document.addEventListener('keydown', (event) => {
-        keysPressed[event.key] = true;
-    });
+    // document.addEventListener('keydown', (event) => {
+    //     keysPressed[event.key] = true;
+    // });
 
-    document.addEventListener('keyup', (event) => {
-        delete keysPressed[event.key];
-    });
+    // document.addEventListener('keyup', (event) => {
+    //     delete keysPressed[event.key];
+    // });
 
     let tutorial_canvas = document.getElementById("gameCanvas");
     let tutorial_canvas_context = tutorial_canvas.getContext('2d');
@@ -141,84 +141,85 @@ window.addEventListener('DOMContentLoaded', (event) => {
             this.body.draw()
         }
         control() {
-            if (keysPressed['w'] && this.moves >= 1) {
-                console.log('working');
-                console.log(this.boardCount);
-                switch (true) {
-                    case this.boardCount <= 8:
-                        console.log('working board eval');
-                        this.body.x += this.grid.width
-                        this.boardCount++;
-                        this.moves--;
-                        break;
-                    case this.boardCount <= 17:
-                        console.log('working board eval 2');
-                        this.body.y += this.grid.height;
-                        this.boardCount++;
-                        this.moves--;
-                        break;
-                    case this.boardCount <= 26:
-                        console.log('working board eval 3');
-                        this.body.x -= this.grid.width
-                        this.boardCount++;
-                        this.moves--;
-                        break;
-                    case this.boardCount <= 35:
-                        console.log('working board eval 4');
-                        this.body.y -= this.grid.height;
-                        this.boardCount++;
-                        this.moves--;
-                        break;
-                }
-            }
-
-            for (let g = 0; g < this.grid.blocks.length; g++) {
-                if (this.body.x > this.grid.blocks[g].x) {
-                    if (this.body.y > this.grid.blocks[g].y) {
-                        if (this.body.x < this.grid.blocks[g].x + this.grid.blocks[g].width) {
-                            if (this.body.y < this.grid.blocks[g].y + this.grid.blocks[g].height) {
-                                if (this.grid.blocks[g].color != "red") {
-                                    this.location = this.grid.blocks[g]
-                                }
-                            }
-                        }
+            if (this.moves > 0) {
+                    switch (true) {
+                        case this.boardCount <=8:
+                            this.body.x += this.grid.width;
+                            break;
+                        case this.boardCount <= 17:
+                            this.body.y += this.grid.height;
+                            break;
+                        case this.boardCount <= 26:
+                            this.body.x -= this.grid.width;
+                            break;
+                        case this.boardCount <= 35:
+                            this.body.y -= this.grid.height;
+                            break;
                     }
-                }
 
+                this.moves--;
+                this.boardCount++;
+                this.location = this.grid.blocks[this.boardCount % this.grid.blocks.length];
 
             }
         }
-
-
-
     }
+
+            // for (let g = 0; g < this.grid.blocks.length; g++) {
+            //     if (this.body.x > this.grid.blocks[g].x) {
+            //         if (this.body.y > this.grid.blocks[g].y) {
+            //             if (this.body.x < this.grid.blocks[g].x + this.grid.blocks[g].width) {
+            //                 if (this.body.y < this.grid.blocks[g].y + this.grid.blocks[g].height) {
+            //                     if (this.grid.blocks[g].color != "red") {
+            //                         this.location = this.grid.blocks[g]
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     }
+
+
+            // }
 
 
 
     let board = new Grid(57, 57, "blue")
     let player = new Agent(board, "white")
 
+    function rollDiceAndMove() {
+        const dice1 = rollDice();
+        alert(`You rolled a ${dice1}`);
+        player.moves = dice1;
+        player.control(); // Call the control method to move the player
+        drawCanvas(); // Update the canvas to reflect the player's new position
+    }
 
-    window.setInterval(function () {
+    function drawCanvas() {
+        tutorial_canvas_context.clearRect(0, 0, tutorial_canvas.width, tutorial_canvas.height);
+        board.draw();
+        player.body.draw();
+    }
+    // window.setInterval(function () {
 
-        board.draw()
-        player.draw()
-    }, 140)
-
+    //     board.draw()
+    //     player.draw()
+    // }, 140)
 
     const diceBtn = document.getElementById('dice-btn');
     const diceResult = document.getElementById('diceResult');
 
     diceBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        const dice1 = rollDice();
-        const dice2 = rollDice();
-        player.moves = dice1;
+        rollDiceAndMove()
+        // const dice1 = rollDice();
+        // const dice2 = rollDice();
+        // player.moves = dice1;
 
         diceResult.textContent = `The first dice is ${dice1} and the second is ${dice2}`;
-        console.log(dice1, dice2);
+        // console.log(dice1, dice2);
     })
 
+    drawCanvas()
 
 })
 },{"./dice":1}]},{},[2]);

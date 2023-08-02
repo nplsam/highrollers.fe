@@ -211,6 +211,4 @@ window.addEventListener('DOMContentLoaded', (event) => {
         diceResult.textContent = `The first dice is ${dice1} and the second is ${dice2}`;
         console.log(dice1, dice2);
     })
-
-
 })
