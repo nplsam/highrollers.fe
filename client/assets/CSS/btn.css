@@ -29,3 +29,19 @@
 #dice-btn:hover {
     background-color: #DD1C1A;
 }
+
+#question-btn {
+    margin-top: 15px;
+    border-radius: 15px;
+    border: none;
+    width: 15rem;
+    height: 3rem;
+    background-color: #FF6B35;
+    font-family: 'Luckiest Guy', cursive;
+    color: #FFFDF8;
+    font-size: 1.9rem;
+}
+
+#question-btn:hover {
+    background-color: #DD1C1A;
+}

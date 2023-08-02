@@ -224,7 +224,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         
 
-        diceResult.textContent = `The first dice is ${dice1} and the second is ${dice2}`;
+        // diceResult.textContent = `The first dice is ${dice1} and the second is ${dice2}`;
         
         setTimeout(function(){
             moveDice.classList.remove('spin-dice');
