@@ -135,7 +135,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             this.body.draw()
         }
         control() {
-            if (keysPressed['w'] && this.moves >= 1) {
+            if (this.moves >= 1) {
                 console.log('working');
                 console.log(this.boardCount);
                 switch (true) {
@@ -220,7 +220,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         e.preventDefault();
         const dice1 = rollDice();
         const dice2 = rollDice();
-        player.moves = dice1;
+        
 
         
 
@@ -233,21 +233,27 @@ window.addEventListener('DOMContentLoaded', (event) => {
             switch(dice1){
                 case 1:
                     moveDice.classList.add('one-dice');
+                    player.moves = dice1;
                     break;
                 case 2:
                     moveDice.classList.add('two-dice');
+                    player.moves = dice1;
                     break;
                 case 3:
                     moveDice.classList.add('three-dice');
+                    player.moves = dice1;
                     break;
                 case 4:
                     moveDice.classList.add('four-dice');
+                    player.moves = dice1;
                     break;
                 case 5:
                     moveDice.classList.add('five-dice');
+                    player.moves = dice1;
                     break;
                 case 6:
                     moveDice.classList.add('six-dice');
+                    player.moves = dice1;
                     break;
                 
             }
@@ -273,6 +279,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 
             }
         },1000)
+
+        
         
 
 
