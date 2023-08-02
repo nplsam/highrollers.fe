@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"watchify ./static/js/index.js -o bundle.js --debug\" \"live-server\"",
-    "game": "watchify assets/stage.js -o bundle.js",
+    "game": "watchify assets/js/stage.js -o bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

@@ -3,19 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Game</title>
     <script defer src="../../bundle.js"></script>
-    <link rel="stylesheet" href="../style.css">
+    <script src="https://kit.fontawesome.com/2d69e80447.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/client/assets/CSS/style.css">
+    <link rel="shortcut icon" href="/client/assets/Logo.png" type="image/x-icon">
 </head>
 <body>
-    <section id="canvasContainer">
-        <canvas height="700" width="700" id="gameCanvas"></canvas>
-    </section>
-    <section id="diceSection">
-        <button role="dice" id="dice-btn">Roll the Dice!</button>
-        <h4 id="diceResult">The result is displayed here.</h4>
-    </section>
-    
-    
+    <header>
+        <h1>High Rollers</h1>
+    </header>
+
+    <main>
+        <section id="canvasContainer">
+            <canvas height="570" width="570" id="gameCanvas"></canvas>
+        </section>
+        <section id="diceSection">
+            <button role="dice" id="dice-btn">Roll the Dice!</button>
+            <h4 id="diceResult">The result will be displayed here.</h4>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            High Rollers 2023<i class="fa-regular fa-copyright" style="color: #FFFDF8;"></i>
+        </p>
+        <ul>
+            <li>
+                <a href="https://github.com/nplsam" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-github" style="color: #FFFDF8;"></i>
+                    Sam Merrick
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/EndlessEndless1999" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-github" style="color: #FFFDF8;"></i>
+                    Charlie Mitchell
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/salinathapa" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-github" style="color: #FFFDF8;"></i>
+                    Salina Thapa
+                </a>
+            </li>
+        </ul>
+    </footer>
 </body>
 </html>
