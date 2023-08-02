@@ -201,7 +201,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         const submitBtn = document.getElementById("submitAnswer");
         const closeBtn = document.getElementsByClassName("close")[0];
     
-        questionElement.textContent = `Guess the country based on the image:`
+        questionElement.textContent = `Guess the country based on the image`
         questionImageElement.src = image
     
         modal.style.display = "block";
@@ -217,21 +217,34 @@ window.addEventListener('DOMContentLoaded', (event) => {
         };
     
         submitBtn.onclick = function () {
-            const answerInput = document.getElementById("answer");
-            const answer = answerInput.value.trim().toLowerCase();
-            if (answer === correctCountry.toLowerCase()) {
-                modal.style.display = "Correct, you stay at this position!";
-            } else {
-                modal.style.display = "Incorrect, move back to your previous position!";
-                resetPlayer();
-            }
-            answerInput.value = "";
+            handleAnswerSubmission(correctCountry);
         };
     }
 
     function rollDice() {
         return Math.floor(Math.random() * 6) + 1;
     }
+
+// NEW FUNCTIONS TO BE ADDED
+
+function closeModal() {
+    const modal = document.getElementById("myModal");
+    modal.style.display = "none";
+  }
+  
+  function handleAnswerSubmission(correctCountry) {
+    const answerInput = document.getElementById("answer");
+    const answer = answerInput.value.trim().toLowerCase();
+  
+    if (answer === correctCountry.toLowerCase()) {
+      closeModal();
+      alert("Correct, you stay at this position!");
+    } else {
+      alert("Incorrect, move back to your previous position!");
+      resetPlayer(); // Make sure you have implemented this function to handle player's movement.
+    }
+    answerInput.value = "";
+  }
 
     const diceBtn = document.getElementById('dice-btn');
     const moveDice = document.getElementById('moveDice');
