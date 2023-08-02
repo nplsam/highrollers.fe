@@ -182,6 +182,32 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
             }
         }
+        revert(){    
+            console.log(this.boardCount);
+                switch (true) {
+                    case this.boardCount <= 8:
+                        console.log('working board eval');
+                        this.body.x -= this.grid.width
+                        this.boardCount--;
+                        break;
+                    case this.boardCount <= 17:
+                        console.log('working board eval 2');
+                        this.body.y -= this.grid.height;
+                        this.boardCount--;
+                        break;
+                    case this.boardCount <= 26:
+                        console.log('working board eval 3');
+                        this.body.x += this.grid.width
+                        this.boardCount--;
+                        break;
+                    case this.boardCount <= 35:
+                        console.log('working board eval 4');
+                        this.body.y += this.grid.height;
+                        this.boardCount--;
+                        break;
+                }
+            
+        }
 
 
 
@@ -206,8 +232,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     const diceBtn = document.getElementById('dice-btn');
     const diceResult = document.getElementById('diceResult');
+
     const moveDice = document.getElementById('moveDice');
     const diffDice = document.getElementById('diffDice');
+
+    const revertBtn = document.getElementById('revert-btn')
+
+    let move = 0;
+
+    function setDice(dice1){
+        move = dice1;
+    }
 
     diceBtn.addEventListener('click', (e) => {
 
@@ -220,7 +255,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
         e.preventDefault();
         const dice1 = rollDice();
         const dice2 = rollDice();
-        
+
+        setDice(dice1);
 
         
 
@@ -288,5 +324,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     })
 
+
+    revertBtn.addEventListener('click', (e) => {
+
+        e.preventDefault();
+        const moveBack = move;
+        for(let i = 0; i < moveBack; i++){
+            player.revert();
+        }
+    })
 
 })
