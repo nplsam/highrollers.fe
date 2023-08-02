@@ -193,28 +193,3 @@ function createPlayerIcon() {
   }
 
 startGame();
-
-
-
-
-
-
-  // // Calculate the top and left positions for the icon
-    // let topPosition, leftPosition;
-    // if (playerPosition < boardColumns) {
-    //     // Top row of the board
-    //     topPosition = 0;
-    //     leftPosition = col * cellWidth;
-    //   } else if (playerPosition < boardColumns + boardRows - 1) {
-    //     // Right column of the board (excluding corners)
-    //     topPosition = (row + 1) * cellHeight;
-    //     leftPosition = (boardColumns - 1) * cellWidth
-    //   } else if (playerPosition < perimeterLength) {
-    //     // Bottom row of the board (excluding corners)
-    //     topPosition = (boardRows - 1) * cellHeight
-    //     leftPosition = (boardColumns - col - 1) * cellWidth - cellWidth;
-    //   } else {
-    //     // Left column of the board (excluding corners)
-    //     topPosition = (boardRows - row - 1) * cellHeight - cellHeight
-    //     leftPosition = 0;
-    //   }
