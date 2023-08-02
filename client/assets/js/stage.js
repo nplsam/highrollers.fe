@@ -128,12 +128,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
             this.boardCount = 0;
             this.moves = 0;
         }
+
         draw() {
             this.control()
             this.body.x = this.location.x + this.location.width / 2
             this.body.y = this.location.y + this.location.height / 2
             this.body.draw()
         }
+
         control() {
             if (this.moves >= 1) {
                 console.log('working');
@@ -163,6 +165,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
                         this.boardCount++;
                         this.moves--;
                         break;
+                }
+                if (this.prevPosition) {
+                    if (
+                        this.body.x === this.prevPosition.x &&
+                        this.body.y === this.prevPosition.y
+                    ) {
+                        this.resetPosition()
+                    }
                 }
             }
 
@@ -241,7 +251,6 @@ function closeModal() {
       alert("Correct, you stay at this position!");
     } else {
       alert("Incorrect, move back to your previous position!");
-      resetPlayer(); // Make sure you have implemented this function to handle player's movement.
     }
     answerInput.value = "";
   }
