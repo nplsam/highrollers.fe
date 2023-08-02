@@ -1,0 +1,36 @@
+<div id="diceRollModal">
+    <div id="diceRollModal-content">
+      <p id="diceRollResult">You rolled a -</p> <!-- Display the dice roll result -->
+      <button id="closeDiceRollModal">OK</button>
+    </div>
+  </div>
+
+<div id="modal">
+    <div id="modal-content">
+      <p>Which country is this image related to?</p>
+      <img id="modal-image" src="" alt="Country Image">
+      <input type="text" id="userAnswer" placeholder="Your Answer">
+      <button id="submitAnswer">Submit Answer</button>
+    </div>
+  </div>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script defer src="./assets/index.js"></script>
+        <link rel="stylesheet" href="./assets/style.css">
+        <title>Board Game</title>
+    </head>
+
+    <body>
+        <h1>Test Board Game</h1>
+        <div id="board">
+            <!-- The board will be generated dynamically using JavaScript -->
+        <div id="playerIcon"></div>
+        </div>
+        <button id="rollButton">Roll Dice</button>
+        <p>Second Dice Roll: <span id="secondDiceRollResult">-</span></p> 
+    </body>
+</html>
