@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const gridRows = 10;
     const gridCols = 10;
 
-    let keysPressed = {}
+    let keysPressed = {};
 
     document.addEventListener('keydown', (event) => {
         keysPressed[event.key] = true;
@@ -128,12 +128,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
             this.boardCount = 0;
             this.moves = 0;
         }
+
         draw() {
             this.control()
             this.body.x = this.location.x + this.location.width / 2
             this.body.y = this.location.y + this.location.height / 2
             this.body.draw()
         }
+
         control() {
             if (this.moves >= 1) {
                 console.log('working');
@@ -163,6 +165,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
                         this.boardCount++;
                         this.moves--;
                         break;
+                    case this.boardCount > 35:
+                        console.log('GAME WON');
+                        alert('GAME WON');
+                        this.moves = 0;
                 }
             }
 
@@ -182,12 +188,35 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
             }
         }
-
+        revert(){    
+            console.log(this.boardCount);
+                switch (true) {
+                    case this.boardCount <= 9:
+                        console.log('working board eval');
+                        this.body.x -= this.grid.width
+                        this.boardCount--;
+                        break;
+                    case this.boardCount <= 18:
+                        console.log('working board eval 2');
+                        this.body.y -= this.grid.height;
+                        this.boardCount--;
+                        break;
+                    case this.boardCount <= 27:
+                        console.log('working board eval 3');
+                        this.body.x += this.grid.width
+                        this.boardCount--;
+                        break;
+                    case this.boardCount <= 36:
+                        console.log('working board eval 4');
+                        this.body.y += this.grid.height;
+                        this.boardCount--;
+                        break;
+                }
+            
+        }
 
 
     }
-
-
 
     let board = new Grid(57, 57, "blue")
     let player = new Agent(board, "white")
@@ -203,32 +232,40 @@ window.addEventListener('DOMContentLoaded', (event) => {
     function rollDice() {
         return Math.floor(Math.random() * 6) + 1;
     }
-
     const diceBtn = document.getElementById('dice-btn');
     const diceResult = document.getElementById('diceResult');
+
     const moveDice = document.getElementById('moveDice');
+
+    let canRollDice = true
+    let isModalDisplayed = false
+    let isDiceRolling = false
+    let isFetchingQuestion = false
+
     const diffDice = document.getElementById('diffDice');
 
+    let move = 0;
+
+    function setDice(dice1){
+        move = dice1;
+    }
+
     diceBtn.addEventListener('click', (e) => {
-
-        moveDice.className = '';
-        diffDice.className = '';
-
-        moveDice.classList.add('spin-dice');
-        diffDice.classList.add('spin-dice');
+        if (!isDiceRolling && !isModalDisplayed && canRollDice) {
+            moveDice.className = '';
+            moveDice.classList.add('spin-dice');
+            isDiceRolling = true
 
         e.preventDefault();
         const dice1 = rollDice();
         const dice2 = rollDice();
         
+        setDice(dice1);
 
         
-
-        diceResult.textContent = `The first dice is ${dice1} and the second is ${dice2}`;
         
         setTimeout(function(){
             moveDice.classList.remove('spin-dice');
-            diffDice.classList.remove('spin-dice');
 
             switch(dice1){
                 case 1:
@@ -257,36 +294,161 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     break;
                 
             }
-            switch(dice2){
-                case 1:
-                    diffDice.classList.add('one-dice');
-                    break;
-                case 2:
-                    diffDice.classList.add('two-dice');
-                    break;
-                case 3:
-                    diffDice.classList.add('three-dice');
-                    break;
-                case 4:
-                    diffDice.classList.add('four-dice');
-                    break;
-                case 5:
-                    diffDice.classList.add('five-dice');
-                    break;
-                case 6:
-                    diffDice.classList.add('six-dice');
-                    break;
-                
-            }
-        },1000)
+            diceBtn.disabled = true
+            questionBtn.disabled  = false
+            canRollDice = false
+            isDiceRolling = false
+        }, 2000)
 
-        
-        
-
-
-        
+    }
 
     })
 
+    function displayQuestionModal(image, correctCountry) {
+        const modal = document.getElementById("myModal");
+        const questionElement = document.getElementById("question");
+        const questionImageElement = document.getElementById("questionImage");
+        const submitBtn = document.getElementById("submitAnswer");
+        const closeBtn = document.getElementsByClassName("close")[0];
+        questionElement.textContent = `Guess the country based on the image`
+        questionImageElement.src = image
+        modal.style.display = "block";
+        isModalDisplayed = true
+        closeBtn.onclick = function () {
+            modal.style.display = "none";
+        };
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
+        submitBtn.onclick = function () {
+            handleAnswerSubmission(correctCountry);
+        };
+    }
+    function rollDice() {
+        return Math.floor(Math.random() * 6) + 1;
+    }
+    function closeModal() {
+        const modal = document.getElementById("myModal");
+        modal.style.display = "none";
+        isModalDisplayed = false
+      }
+      function hideResultModal() {
+        const resultModal = document.getElementById("resultModal");
+        resultModal.style.display = "none";
+      }
+      function showResultModal(isCorrect) {
+        const resultModal = document.getElementById("resultModal");
+        const resultMessage = document.getElementById("resultMessage");
+        const closeBtn = document.getElementsByClassName("close")[0];
+        resultMessage.textContent = isCorrect ? "Correct, you stay at this position!" : "Incorrect, move back to your previous position!";
+        resultModal.style.display = "block";
+        closeBtn.onclick = function() {
+          resultModal.style.display = "none";
+        };
+        window.onclick = function(event) {
+          if (event.target === resultModal) {
+            resultModal.style.display = "none";
+          }
+        }
+        setTimeout(hideResultModal, 2000);
+      }
+    function handleAnswerSubmission(correctCountry) {
+        const answerInput = document.getElementById("answer");
+        const answer = answerInput.value.trim().toLowerCase();
+        if (answer === correctCountry.toLowerCase()) {
+          closeModal();
+          showResultModal(true)
+        } else {
+          closeModal()
+          showResultModal(false)
+          const moveBack = move;
+          for(let i = 0; i < moveBack; i++){
+              player.revert();
+        }
+        }
+        answerInput.value = "";
+        if (!questionBtn.disabled) {
+            diceBtn.disabled = false
+        }
+      }
+    const questionBtn = document.getElementById('question-btn')
 
-})
+    questionBtn.addEventListener('click', (e) => {
+        if (!isFetchingQuestion && !questionBtn.disabled) {
+        diffDice.className = '';
+        diffDice.classList.add('spin-dice');
+        isFetchingQuestion = true
+        e.preventDefault();
+        const dice2 = rollDice();
+        let questionType = "";
+        setTimeout(function(){
+            diffDice.classList.remove('spin-dice');
+            switch(dice2){
+                case 1:
+                    diffDice.classList.add('one-dice');
+                    questionType = "easy";
+                    break;
+                case 2:
+                    diffDice.classList.add('two-dice');
+                    questionType = "easy";
+                    break;
+                case 3:
+                    diffDice.classList.add('three-dice');
+                    questionType = "medium";
+                    break;
+                case 4:
+                    diffDice.classList.add('four-dice');
+                    questionType = "medium";
+                    break;
+                case 5:
+                    diffDice.classList.add('five-dice');
+                    questionType = "hard";
+                    break;
+                case 6:
+                    diffDice.classList.add('six-dice');
+                    questionType = "hard";
+                    break;
+            }
+            fetch(`http://localhost:3000/countries/random/${questionType}`)
+            .then((response) => {
+                if(!response.ok) {
+                    throw new Error("Network response was not ok")
+                }
+                return response.json()
+            })
+            .then((data) => {
+                 const image = data.imageUrl;
+                 const correctCountry = data.country;
+                 displayQuestionModal(image, correctCountry);
+                 diceBtn.disabled = false
+                 questionBtn.disabled = true
+                 canRollDice = true
+                 isFetchingQuestion = false
+            })
+            .catch((error) => {
+                console.error("Error fetching question: ", error)
+                diceBtn.disabled = false
+                questionBtn.disabled = true
+                canRollDice = true
+                isFetchingQuestion = false
+                });
+            }, 2000)
+          }
+        })
+    })
+
+    
+    
+
+
+    // revertBtn.addEventListener('click', (e) => {
+
+    //     e.preventDefault();
+    //     const moveBack = move;
+    //     for(let i = 0; i < moveBack; i++){
+    //         player.revert();
+    //     }
+    // })
+

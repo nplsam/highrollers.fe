@@ -32,8 +32,31 @@
                     <img class="" src="../Images/diff_dice.png" id="diffDice" alt="Difficulty Dice" aria-label="Difficulty Dice"/>
                 </div>
             </div>
+
             <button role="dice" id="dice-btn" aria-label="Roll the Dice!">Roll the Dice!</button>
             <h4 id="diceResult">The result will be displayed here.</h4>
+
+            <button role="dice" id="dice-btn">Roll the Dice!</button>
+            <button role="question" id="question-btn">Get Question!</button>
+            <h4 id="diceResultTitle"></h4>
+
+                    <!-- Modal -->
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close"></span>
+                    <p id="question"></p>
+                    <img id="questionImage" src="" alt="Country Image">
+                    <input type="text" id="answer" placeholder="Answer: ">
+                    <button id="submitAnswer">Submit</button>
+                </div>
+            </div>
+            <div id="resultModal" class="modal">
+                <div class="result-content">
+                  <span class="close"></span>
+                  <p id="resultMessage"></p>
+                </div>
+              </div>
+
         </section>
     </main>
 
