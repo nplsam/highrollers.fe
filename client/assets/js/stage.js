@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const gridRows = 10;
     const gridCols = 10;
 
-    let keysPressed = {}
+    let keysPressed = {};
 
     document.addEventListener('keydown', (event) => {
         keysPressed[event.key] = true;
@@ -163,6 +163,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
                         this.boardCount++;
                         this.moves--;
                         break;
+                    case this.boardCount > 35:
+                        console.log('GAME WON');
+                        alert('GAME WON');
+                        this.moves = 0;
                 }
             }
 
@@ -333,5 +337,4 @@ window.addEventListener('DOMContentLoaded', (event) => {
             player.revert();
         }
     })
-
 })
