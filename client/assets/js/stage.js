@@ -168,7 +168,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
                         this.moves--;
                         break;
                     case this.boardCount > 35:
-                        winModal.classList.remove('hidden');
                         this.moves = 0;
                 }
             }
@@ -361,6 +360,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
         if (answer === correctCountry.toLowerCase()) {
           closeModal();
           showResultModal(true)
+          if(player.boardCount > 35){
+            winModal.classList.remove('hidden');
+          }
         } else {
           closeModal()
           showResultModal(false)
