@@ -207,47 +207,53 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const diceBtn = document.getElementById('dice-btn');
     const moveDice = document.getElementById('moveDice');
 
+    let canRollDice = true
+
     diceBtn.addEventListener('click', (e) => {
+        if (canRollDice) {
+            moveDice.className = '';
+            moveDice.classList.add('spin-dice');
 
-        moveDice.className = '';
-
-        moveDice.classList.add('spin-dice');
-
-        e.preventDefault();
-        const dice1 = rollDice();
-        
-        setTimeout(function(){
-            moveDice.classList.remove('spin-dice');
-
-            switch(dice1){
-                case 1:
-                    moveDice.classList.add('one-dice');
-                    player.moves = dice1;
-                    break;
-                case 2:
-                    moveDice.classList.add('two-dice');
-                    player.moves = dice1;
-                    break;
-                case 3:
-                    moveDice.classList.add('three-dice');
-                    player.moves = dice1;
-                    break;
-                case 4:
-                    moveDice.classList.add('four-dice');
-                    player.moves = dice1;
-                    break;
-                case 5:
-                    moveDice.classList.add('five-dice');
-                    player.moves = dice1;
-                    break;
-                case 6:
-                    moveDice.classList.add('six-dice');
-                    player.moves = dice1;
-                    break;    
-            }
-    }, 2000)
-});
+            e.preventDefault();
+            const dice1 = rollDice();
+            
+            setTimeout(function(){
+                moveDice.classList.remove('spin-dice');
+    
+                switch(dice1){
+                    case 1:
+                        moveDice.classList.add('one-dice');
+                        player.moves = dice1;
+                        break;
+                    case 2:
+                        moveDice.classList.add('two-dice');
+                        player.moves = dice1;
+                        break;
+                    case 3:
+                        moveDice.classList.add('three-dice');
+                        player.moves = dice1;
+                        break;
+                    case 4:
+                        moveDice.classList.add('four-dice');
+                        player.moves = dice1;
+                        break;
+                    case 5:
+                        moveDice.classList.add('five-dice');
+                        player.moves = dice1;
+                        break;
+                    case 6:
+                        moveDice.classList.add('six-dice');
+                        player.moves = dice1;
+                        break;
+                }  
+            diceBtn.disabled = true
+            questionBtn.disabled  = false
+            canRollDice = false
+        }, 2000)
+    };
 })
+
+
 
 function displayQuestionModal(image, correctCountry) {
     const modal = document.getElementById("myModal");
@@ -297,15 +303,19 @@ function handleAnswerSubmission(correctCountry) {
       alert("Incorrect, move back to your previous position!");
     }
     answerInput.value = "";
+
+    if (!questionBtn.disabled) {
+        diceBtn.disabled = false
+    }
   }
 
 const questionBtn = document.getElementById('question-btn')
 const diffDice = document.getElementById('diffDice');
 
 questionBtn.addEventListener('click', (e) => {
+    if (!questionBtn.disabled) {
 
     diffDice.className = '';
-
     diffDice.classList.add('spin-dice');
 
     e.preventDefault();
@@ -340,7 +350,7 @@ questionBtn.addEventListener('click', (e) => {
                 diffDice.classList.add('six-dice');
                 questionType = "hard";
                 break;     
-        }
+        }   
 
         fetch(`http://localhost:3000/countries/random/${questionType}`)
         .then((response) => { 
@@ -353,10 +363,18 @@ questionBtn.addEventListener('click', (e) => {
              const image = data.imageUrl;
              const correctCountry = data.country;
              displayQuestionModal(image, correctCountry);
+             diceBtn.disabled = false
+             questionBtn.disabled = true
+             canRollDice = true
         })
         .catch((error) => {
             console.error("Error fetching question: ", error)
-        });
+            diceBtn.disabled = false
+            questionBtn.disabled = true
+            canRollDice = true
+            });
+        }, 2000)
+      }
+    })
+})
 
-}, 2000)
-});

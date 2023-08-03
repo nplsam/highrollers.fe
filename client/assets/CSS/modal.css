@@ -22,12 +22,3 @@
     display: block;
     margin: 10px auto;
   }
-
-.close {
-    margin-top: -8px;
-    font-size: 25px;
-    font-weight: bold;
-    position: absolute;
-    right: 10px;
-    cursor: pointer;
-  }
