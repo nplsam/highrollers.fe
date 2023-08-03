@@ -41,6 +41,7 @@
 
 #resultModal {
   display: none;
+  position: absolute;
   z-index: 1; 
   width: 100%;
   height: auto;
@@ -61,4 +62,31 @@
 
 .hidden {
   display: none;
+}
+
+#playAgain {
+  position: absolute;
+  z-index: 1; 
+  width: 100%;
+  height: auto;
+  overflow: auto;
+  top: 15%;
+}
+
+#playAgain-content {
+  width: 80%;
+  max-width: 400px;
+  margin: 15% auto;
+  padding: 20px;  
+  text-align: center;
+  background-color: #FFFDFA;
+  border: solid #FF6B35;
+  border-radius: 15px;
+}
+
+#playAgainBtn {
+  font-size: 3rem;
+  width: 20rem;
+  margin: 0 auto;
+  margin-top: 10px;
 }
