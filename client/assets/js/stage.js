@@ -204,77 +204,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
         player.draw()
     }, 140)
 
-    function displayQuestionModal(image, correctCountry) {
-        const modal = document.getElementById("myModal");
-        const questionElement = document.getElementById("question");
-        const questionImageElement = document.getElementById("questionImage");
-        const submitBtn = document.getElementById("submitAnswer");
-        const closeBtn = document.getElementsByClassName("close")[0];
-    
-        questionElement.textContent = `Guess the country based on the image`
-        questionImageElement.src = image
-    
-        modal.style.display = "block";
-    
-        closeBtn.onclick = function () {
-            modal.style.display = "none";
-        };
-    
-        window.onclick = function (event) {
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        };
-    
-        submitBtn.onclick = function () {
-            handleAnswerSubmission(correctCountry);
-        };
-    }
-
-    function rollDice() {
-        return Math.floor(Math.random() * 6) + 1;
-    }
-
-// NEW FUNCTIONS TO BE ADDED
-
-function closeModal() {
-    const modal = document.getElementById("myModal");
-    modal.style.display = "none";
-  }
-  
-  function handleAnswerSubmission(correctCountry) {
-    const answerInput = document.getElementById("answer");
-    const answer = answerInput.value.trim().toLowerCase();
-  
-    if (answer === correctCountry.toLowerCase()) {
-      closeModal();
-      alert("Correct, you stay at this position!");
-    } else {
-      alert("Incorrect, move back to your previous position!");
-    }
-    answerInput.value = "";
-  }
-
     const diceBtn = document.getElementById('dice-btn');
     const moveDice = document.getElementById('moveDice');
-    const diffDice = document.getElementById('diffDice');
 
     diceBtn.addEventListener('click', (e) => {
 
         moveDice.className = '';
-        diffDice.className = '';
 
         moveDice.classList.add('spin-dice');
-        diffDice.classList.add('spin-dice');
 
         e.preventDefault();
         const dice1 = rollDice();
-        const dice2 = rollDice();
-        let questionType = "";
         
         setTimeout(function(){
             moveDice.classList.remove('spin-dice');
-            diffDice.classList.remove('spin-dice');
 
             switch(dice1){
                 case 1:
@@ -302,61 +245,118 @@ function closeModal() {
                     player.moves = dice1;
                     break;    
             }
-            switch(dice2){
-                case 1:
-                    diffDice.classList.add('one-dice');
-                    break;
-                case 2:
-                    diffDice.classList.add('two-dice');
-                    break;
-                case 3:
-                    diffDice.classList.add('three-dice');
-                    break;
-                case 4:
-                    diffDice.classList.add('four-dice');
-                    break;
-                case 5:
-                    diffDice.classList.add('five-dice');
-                    break;
-                case 6:
-                    diffDice.classList.add('six-dice');
-                    break;     
-            }
-            switch (dice2) {
-                case 1:
-                case 2:
-                    questionType = "easy";
-                    break;
-                case 3:
-                case 4:
-                    questionType = "medium";
-                    break;
-                case 5:
-                case 6:
-                    questionType = "hard";
-                    break;
-                default:
-                    console.error("Invalid dice value");
-                    return;
-            }
-
-            fetch(`http://localhost:3000/countries/random/${questionType}`)
-            .then((response) => { 
-                if(!response.ok) {
-                    throw new Error("Network response was not ok")
-                }
-                return response.json()
-            })
-            .then((data) => {
-                 const image = data.imageUrl;
-                 const correctCountry = data.country;
-                 displayQuestionModal(image, correctCountry);
-            })
-            .catch((error) => {
-                console.error("Error fetching question: ", error)
-            });
-
     }, 2000)
 });
 })
 
+function displayQuestionModal(image, correctCountry) {
+    const modal = document.getElementById("myModal");
+    const questionElement = document.getElementById("question");
+    const questionImageElement = document.getElementById("questionImage");
+    const submitBtn = document.getElementById("submitAnswer");
+    const closeBtn = document.getElementsByClassName("close")[0];
+
+    questionElement.textContent = `Guess the country based on the image`
+    questionImageElement.src = image
+
+    modal.style.display = "block";
+
+    closeBtn.onclick = function () {
+        modal.style.display = "none";
+    };
+
+    window.onclick = function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    };
+
+    submitBtn.onclick = function () {
+        handleAnswerSubmission(correctCountry);
+    };
+}
+
+function rollDice() {
+    return Math.floor(Math.random() * 6) + 1;
+}
+
+function closeModal() {
+    const modal = document.getElementById("myModal");
+    modal.style.display = "none";
+  }
+
+function handleAnswerSubmission(correctCountry) {
+    const answerInput = document.getElementById("answer");
+    const answer = answerInput.value.trim().toLowerCase();
+  
+    if (answer === correctCountry.toLowerCase()) {
+      closeModal();
+      alert("Correct, you stay at this position!");
+    } else {
+      closeModal()
+      alert("Incorrect, move back to your previous position!");
+    }
+    answerInput.value = "";
+  }
+
+const questionBtn = document.getElementById('question-btn')
+const diffDice = document.getElementById('diffDice');
+
+questionBtn.addEventListener('click', (e) => {
+
+    diffDice.className = '';
+
+    diffDice.classList.add('spin-dice');
+
+    e.preventDefault();
+    const dice2 = rollDice();
+    let questionType = "";
+    
+    setTimeout(function(){
+        diffDice.classList.remove('spin-dice');
+
+        switch(dice2){
+            case 1:
+                diffDice.classList.add('one-dice');
+                questionType = "easy";
+                break;
+            case 2:
+                diffDice.classList.add('two-dice');
+                questionType = "easy";
+                break;
+            case 3:
+                diffDice.classList.add('three-dice');
+                questionType = "medium";
+                break;
+            case 4:
+                diffDice.classList.add('four-dice');
+                questionType = "medium";
+                break;
+            case 5:
+                diffDice.classList.add('five-dice');
+                questionType = "hard";
+                break;
+            case 6:
+                diffDice.classList.add('six-dice');
+                questionType = "hard";
+                break;     
+        }
+
+        fetch(`http://localhost:3000/countries/random/${questionType}`)
+        .then((response) => { 
+            if(!response.ok) {
+                throw new Error("Network response was not ok")
+            }
+            return response.json()
+        })
+        .then((data) => {
+             const image = data.imageUrl;
+             const correctCountry = data.country;
+             displayQuestionModal(image, correctCountry);
+        })
+        .catch((error) => {
+            console.error("Error fetching question: ", error)
+        });
+
+}, 2000)
+});
