@@ -297,6 +297,25 @@ function closeModal() {
     isModalDisplayed = false
   }
 
+  function showResultModal(isCorrect) {
+    const resultModal = document.getElementById("resultModal");
+    const resultMessage = document.getElementById("resultMessage");
+    const closeBtn = document.getElementsByClassName("close")[0];
+  
+    resultMessage.textContent = isCorrect ? "Correct, you stay at this position!" : "Incorrect, move back to your previous position!";
+    resultModal.style.display = "block";
+  
+    closeBtn.onclick = function() {
+      resultModal.style.display = "none";
+    };
+  
+    window.onclick = function(event) {
+      if (event.target === resultModal) {
+        resultModal.style.display = "none";
+      }
+    };
+  }
+
 function handleAnswerSubmission(correctCountry) {
     const answerInput = document.getElementById("answer");
     const answer = answerInput.value.trim().toLowerCase();
@@ -304,10 +323,10 @@ function handleAnswerSubmission(correctCountry) {
   
     if (answer === correctCountry.toLowerCase()) {
       closeModal();
-      alert("Correct, you stay at this position!");
+      showResultModal(true)
     } else {
       closeModal()
-      alert("Incorrect, move back to your previous position!");
+      showResultModal(false)
     }
     answerInput.value = "";
 
