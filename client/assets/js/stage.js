@@ -411,7 +411,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     questionType = "hard";
                     break;
             }
-            fetch(`http://localhost:3000/countries/random/${questionType}`)
+            fetch(`https://high-rollers-api.onrender.com/countries/random/${questionType}`)
             .then((response) => {
                 if(!response.ok) {
                     throw new Error("Network response was not ok")
