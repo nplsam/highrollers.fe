@@ -297,6 +297,11 @@ function closeModal() {
     isModalDisplayed = false
   }
 
+  function hideResultModal() {
+    const resultModal = document.getElementById("resultModal");
+    resultModal.style.display = "none";
+  }
+
   function showResultModal(isCorrect) {
     const resultModal = document.getElementById("resultModal");
     const resultMessage = document.getElementById("resultMessage");
@@ -314,6 +319,7 @@ function closeModal() {
         resultModal.style.display = "none";
       }
     };
+    setTimeout(hideResultModal, 2000);
   }
 
 function handleAnswerSubmission(correctCountry) {
