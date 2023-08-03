@@ -3,144 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="High Rollers - The exciting world of geography!">
     <title>Home</title>
     <link rel="shortcut icon" href="./assets/Logo.png" type="image/x-icon">
-    <script src="https://kit.fontawesome.com/2d69e80447.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/CSS/style.css">
+    <script src="https://kit.fontawesome.com/2d69e80447.js" crossorigin="anonymous"></script>
     <script defer src="./assets/js/index.js"></script>
 </head>
 <body>
-    <header>
+    <header id="home" aria-label="Go to Home Page">
+      <a href="./index.html">
         <h1>High Rollers</h1>
-        <nav>
-            ABOUT
-        </nav>
+      </a>
     </header>
 
     <main>
         <div id="logo">
-            <img src="./assets/Logo.png" alt="placeholder">
+            <img src="./assets/Logo.png" alt="High Rollers logo" aria-label="High Rollers logo">
         </div>
 
         <div id="btn-container">
-            <button class="btn">Start</button>
-            <button class="btn" id="settings" data-bs-toggle="modal" data-bs-target="#settingsModal">Settings</button>
-            <button class="btn" id="howTo" data-bs-toggle="modal" data-bs-target="#howToModal">How To</button>
+            <a href="./assets/html/game.html">
+              <button class="btn" aria-label="Play the game">Play</button>
+            </a>
+            <button class="btn" id="howTo" data-bs-toggle="modal" data-bs-target="#howToModal" aria-label="Open How To modal">How To</button>
+            <button class="btn" id="about" data-bs-toggle="modal" data-bs-target="#aboutModal" aria-label="Open About modal">About</button>
         </div>
-        
-        
-
     </main>
-    <div class="modal fade" id="howToModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    
+    <div class="modal fade" id="howToModal" tabindex="-1" aria-labelledby="howToModalLable" aria-hidden="true" aria-modal="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5 just" id="exampleModalLabel">How to play!</h1>
+              <h2 class="modal-title fs-2 text-center" id="howToModalTitle" aria-label="How to Play">
+                How to Play
+              </h2>
             </div>
             <div class="modal-body">
-                <div class="accordion" id="accordionExample">
+                <div class="accordion" id="howToAccordian">
                     <div class="accordion-item">
-                        <h2 class="accordion-header">
-                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                            Starting the Game:
+                        <h3 class="accordion-header">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" aria-label="Toggle Starting the Game content">
+                            Starting the Game
                           </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        </h3>
+                        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#howToAccordian">
                           <div class="accordion-body">
-                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            To embark on the captivating journey of High Rollers, click the 'Play' button. You will find a game piece already positioned on the start space ready for your adventure. To start your journey, simply roll the dice and begin your exciting solo quest through the world of Geography.
                           </div>
                         </div>
                       </div>
                     <div class="accordion-item">
-                      <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" aria-label="Toggle Rolling the Dice content">
                           Rolling the Dice
                         </button>
-                      </h2>
-                      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      </h3>
+                      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#howToAccordian">
                         <div class="accordion-body">
-                          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                          <p>
+                            High Rollers features two dice for an exciting twist! The first dice determines the number of spaces your game piece moves forward and the second dice sets the difficulty level of your Geography question. Click the "Roll the Dice" button to unleash the dice, and your game piece will move forward based on the first dice's result.
+                          </p>
+                          Once your game piece moves to a new location based on the first dice roll, it's time to answer a Geography question. To determine the difficulty level of the question, click the "Get Question" button to roll the second dice. The second dice's result will set the difficulty level of the image-based Geography question you will encounter.
                         </div>
                       </div>
                     </div>
                     <div class="accordion-item">
-                      <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" aria-label="Toggle Answering the Question content">
                           Answering the Question
                         </button>
-                      </h2>
-                      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      </h3>
+                      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#howToAccordian">
                         <div class="accordion-body">
-                          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                          As you progress across the board, you will encounter various Geography related images. Instead of conventional text-based questions, High Rollers uses images to test your Geography knowledge. Carefully examine the image displayed and guess the country it represents. Click the "Submit" button to check if your guess is correct. If you guess correctly, you stay in your new position. However, if you guess incorrectly, you will be moved back to where you were before your dice roll.
                         </div>
                       </div>
                     </div>
                     <div class="accordion-item">
-                        <h2 class="accordion-header">
-                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <h3 class="accordion-header">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" aria-label="Toggle Winning the Game content">
                             Winning the Game!
                           </button>
-                        </h2>
-                        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        </h3>
+                        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#howToAccordian">
                           <div class="accordion-body">
-                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            <p>
+                              Your goal is to navigate through the game board, answering image-based questions and skillfully rolling the dice to reach the "Finish" space. Challenge yourself to complete the journey and become a true Geography expert!
+                            </p>
+                            Enjoy the thrilling experience of High Rollers as you embark on a solo adventure through the fascinating realm of Geography! May your quest be filled with fun and enlightenment.
                           </div>
                         </div>
                       </div>
                   </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close How To modal">Close</button>
             </div>
           </div>
         </div>
       </div>
-    <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+
+    <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true" aria-modal="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="settingsModalLabel">Settings:</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h2 class="modal-title fs-2 text-center" id="aboutModalLabel" aria-label="Welcome to High Rollers - The Exciting World of Geography">
+                Welcome to High Rollers
+              </h2>
+              <h4 class="modal-title fs-5 text-center">The Exciting World of Geography</h4>
             </div>
             <div class="modal-body">
-                <div class="form-check form-switch">
-                    <label class="form-check-label" for="darkTheme">Dark Theme</label>
-                    <input class="form-check-input" type="checkbox" role="switch" id="darkTheme">
+              <div class="accordion" id="aboutAccordion">
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOneAbout" aria-expanded="false" aria-controls="collapseOneAbout" aria-label="Toggle What the game is about content">
+                        What the game is about
+                      </button>
+                    </h3>
+                    <div id="collapseOneAbout" class="accordion-collapse collapse" data-bs-parent="#aboutAccordian">
+                      <div class="accordion-body">
+                        <p>
+                          At High Rollers, our mission is to encourage students to embrace the fascinating realm of Geography by making the learning process interactive, immersive, and, most importantly, fun!
+                        </p>
+                        We recognized the challenge of declining interest in non-STEM subjects and wanted to create a solution that not only educates but also entertains. Our board game is designed to instill a sense of curiosity and adventure in students, making them eager to explore the fascinating world of Geography.
+                      </div>
+                    </div>
                   </div>
-                <div class="form-check form-switch">
-                    <label class="form-check-label" for="music">Music</label>
-                    <input class="form-check-input" type="checkbox" role="switch" id="music">
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoAbout" aria-expanded="false" aria-controls="collapseTwoAbout" aria-label="Toggle How we built it content">
+                      How we built it
+                    </button>
+                  </h3>
+                  <div id="collapseTwoAbout" class="accordion-collapse collapse" data-bs-parent="#aboutAccordian">
+                    <div class="accordion-body">
+                      We built High Rollers from the collaborative efforts of our passionate three member team. By combining our expertise in education, game design, and technology, we brought the game to life using HTML, CSS, and JS to create an interactive and visually appealing web-based application. 
+                    </div>
+                  </div>
                 </div>
-                
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThreeAbout" aria-expanded="false" aria-controls="collapseThreeAbout" aria-label="Toggle What technologies we used content">
+                      What technologies we used
+                    </button>
+                  </h3>
+                  <div id="collapseThreeAbout" class="accordion-collapse collapse" data-bs-parent="#aboutAccordian">
+                    <div class="accordion-body">
+                      <p>
+                        High Rollers owes its existence to the latest web technologies, as we harnessed their flexibility and interactivity to create a captivating gaming experience:
+                      </p>
+                      <ul>
+                        <li>
+                          <strong>HTML:</strong> Provided the backbone for structuring the game harnessed the the game's user interface, ensuring a seamless experience for players.
+                        </li>
+                        <li>
+                          <strong>CSS:</strong> Brought life to the game with visually stunning designs, vibrant colors, and an intuitive layout, making it an eye-catching and enjoyable experience.
+                        </li>
+                        <li>
+                          <strong>JavaScript:</strong> Enabled us to create interactive elements, engaging gameplay mechanics, and dynamic functionalities, making learning an exciting adventure.
+                        </li>
+                        <li>
+                          <strong>Express JS:</strong> Allowed us to build a powerful API to efficiently manage and retrive images required to enrich the game.
+                        </li>
+                      </ul>
+                        By leveraging the capabilities of these technologies, we were able to create an accessible and responsive game.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourAbout" aria-expanded="false" aria-controls="collapseFourAbout" aria-label="Toggle How we could develop it further content">
+                        How we could develop it further
+                      </button>
+                    </h3>
+                    <div id="collapseFourAbout" class="accordion-collapse collapse" data-bs-parent="#aboutAccordian">
+                      <div class="accordion-body">
+                        <p>
+                          While we are thrilled with the success of High Rollers, we believe that there's always room for improvement and growth. As we look to the future, we envision expanding the game's reach and accessibility.
+                        </p>
+                        <ol>
+                          <li>
+                            Multiplayer Mode: To allow collaborative learning and friendly competition, we plan to introduce a multiplayer mode. Students can team up with friends, compete against each other, and embark on thrilling Geography challenges together.
+                          </li>
+                          <li>
+                            Educational Content Updates: We aim to continuously update the game with fresh educational content, ensuring that students learn about the latest discoveries, global events, and advancements in geographical knowledge.
+                          </li>
+                          <li>
+                            Mobile Version: We would love to explore the possibility of developing a mobile version of High Rollers. This will enable students to dive into the world of Geography anytime, anywhere, making learning a part of their daily lives.
+                          </li>
+                        </ol>
+                      </div>
+                    </div>
+                  </div>
+              </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close About modal">Close</button>
             </div>
           </div>
         </div>
       </div>
-      
-      
+    
     <footer>
         <p>
             High Rollers 2023<i class="fa-regular fa-copyright" style="color: #FFFDF8;"></i>
         </p>
         <ul>
             <li>
-                <a href="https://github.com/nplsam" target="_blank" rel="noopener">
+                <a href="https://github.com/nplsam" target="_blank" rel="noopener" aria-label="Visit Sam Merrick's GitHub profile">
                     <i class="fa-brands fa-github" style="color: #FFFDF8;"></i>
                     Sam Merrick
                 </a>
             </li>
             <li>
-                <a href="https://github.com/EndlessEndless1999" target="_blank" rel="noopener">
+                <a href="https://github.com/EndlessEndless1999" target="_blank" rel="noopener" aria-label="Visit Charlie Mitchell's GitHub profile">
                     <i class="fa-brands fa-github" style="color: #FFFDF8;"></i>
                     Charlie Mitchell
                 </a>
             </li>
             <li>
-                <a href="https://github.com/salinathapa" target="_blank" rel="noopener">
+                <a href="https://github.com/salinathapa" target="_blank" rel="noopener" aria-label="Visit Salina Thapa's GitHub profile">
                     <i class="fa-brands fa-github" style="color: #FFFDF8;"></i>
                     Salina Thapa
                 </a>

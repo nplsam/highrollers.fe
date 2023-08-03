@@ -3,15 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="High Rollers - The exciting world of geography!">
     <title>Game</title>
-    <script defer src="../../bundle.js"></script>
-    <script src="https://kit.fontawesome.com/2d69e80447.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/client/assets/CSS/style.css">
     <link rel="shortcut icon" href="/client/assets/Logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <script src="https://kit.fontawesome.com/2d69e80447.js" crossorigin="anonymous"></script>
+    <script defer src="../js/stage.js"></script>
+    <script defer src="../../bundle.js"></script>
 </head>
 <body>
-    <header>
-        <h1>High Rollers</h1>
+    <header id="home" aria-label="Go to Home Page">
+        <a href="/client/index.html">
+          <h1>High Rollers</h1>
+        </a>
     </header>
 
     <main>
@@ -19,8 +24,39 @@
             <canvas height="570" width="570" id="gameCanvas"></canvas>
         </section>
         <section id="diceSection">
-            <button role="dice" id="dice-btn">Roll the Dice!</button>
+            <div id="dice">
+                <div class="diceContainer">
+                    <img class="" src="../Images/move_dice.png" id="moveDice" alt="Movement Dice" aria-label="Movement Dice"/>
+                </div>
+                <div class="diceContainer">
+                    <img class="" src="../Images/diff_dice.png" id="diffDice" alt="Difficulty Dice" aria-label="Difficulty Dice"/>
+                </div>
+            </div>
+
+            <button role="dice" id="dice-btn" aria-label="Roll the Dice!">Roll the Dice!</button>
             <h4 id="diceResult">The result will be displayed here.</h4>
+
+            <button role="dice" id="dice-btn">Roll the Dice!</button>
+            <button role="question" id="question-btn">Get Question!</button>
+            <h4 id="diceResultTitle"></h4>
+
+                    <!-- Modal -->
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close"></span>
+                    <p id="question"></p>
+                    <img id="questionImage" src="" alt="Country Image">
+                    <input type="text" id="answer" placeholder="Answer: ">
+                    <button id="submitAnswer">Submit</button>
+                </div>
+            </div>
+            <div id="resultModal" class="modal">
+                <div class="result-content">
+                  <span class="close"></span>
+                  <p id="resultMessage"></p>
+                </div>
+              </div>
+
         </section>
     </main>
 
@@ -30,24 +66,25 @@
         </p>
         <ul>
             <li>
-                <a href="https://github.com/nplsam" target="_blank" rel="noopener">
+                <a href="https://github.com/nplsam" target="_blank" rel="noopener" aria-label="Visit Sam Merrick's GitHub profile">
                     <i class="fa-brands fa-github" style="color: #FFFDF8;"></i>
                     Sam Merrick
                 </a>
             </li>
             <li>
-                <a href="https://github.com/EndlessEndless1999" target="_blank" rel="noopener">
+                <a href="https://github.com/EndlessEndless1999" target="_blank" rel="noopener" aria-label="Visit Charlie Mitchell's GitHub profile">
                     <i class="fa-brands fa-github" style="color: #FFFDF8;"></i>
                     Charlie Mitchell
                 </a>
             </li>
             <li>
-                <a href="https://github.com/salinathapa" target="_blank" rel="noopener">
+                <a href="https://github.com/salinathapa" target="_blank" rel="noopener" aria-label="Visit Salina Thapa's GitHub profile">
                     <i class="fa-brands fa-github" style="color: #FFFDF8;"></i>
                     Salina Thapa
                 </a>
             </li>
         </ul>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>

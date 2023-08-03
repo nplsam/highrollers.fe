@@ -24,9 +24,21 @@ header {
     padding-bottom: 10px;
 }
 
+#home a {
+    text-decoration: none;
+    color: #FFFDF8;
+}
+
+#home a:visited {
+    text-decoration: none;
+    color: #FFFDF8;
+}
+
 h1 {
     font-family: 'Luckiest Guy', cursive;
     font-size: 8rem;
+    font-weight: normal; /* Add or modify this line to make the text normal */
+    font-style: normal; 
     margin: 0;
 }
 
@@ -59,6 +71,20 @@ img {
     justify-content: center;
 }
 
+.modal-header {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Luckiest Guy', cursive;
+}
+
+h4 {
+    font-family: 'Luckiest Guy', cursive;
+}
+
 footer {
     width: 100%;
     display: flex;
@@ -67,7 +93,7 @@ footer {
     justify-content: center;
     background-color: #004E89;
     color: #FFFDF8;
-    padding-top: 0px;
+    padding-top: 10px;
     padding-bottom: 10px;
     font-size: 1.5rem;
 }
@@ -79,7 +105,7 @@ footer ul {
 
 footer li {
     display: inline-block;
-    padding-top: 10px;
+    padding-top: 0px;
     padding-left: 50px;
     padding-right: 50px;
 }
