@@ -55,10 +55,6 @@ main {
     margin: 25px;
 }
 
-h2 {
-    font-family: 'Luckiest Guy', cursive;
-}
-
 #logo {
     display: flex;
     align-items: center;
@@ -73,6 +69,20 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.modal-header {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Luckiest Guy', cursive;
+}
+
+h4 {
+    font-family: 'Luckiest Guy', cursive;
 }
 
 footer {
