@@ -363,9 +363,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
         } else {
           closeModal()
           showResultModal(false)
-         const moveBack = move;
-         for(let i = 0; i < moveBack; i++){
-             player.revert();
+          const moveBack = move;
+          for(let i = 0; i < moveBack; i++){
+              player.revert();
         }
         }
         answerInput.value = "";
@@ -438,19 +438,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
           }
         })
     })
+
     
     
-    
-    
-    
-    
-    
-    
-    
-    
+
+
     // revertBtn.addEventListener('click', (e) => {
 
     //     e.preventDefault();
-
+    //     const moveBack = move;
+    //     for(let i = 0; i < moveBack; i++){
+    //         player.revert();
+    //     }
     // })
 
