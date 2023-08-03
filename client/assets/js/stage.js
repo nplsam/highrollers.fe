@@ -208,11 +208,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const moveDice = document.getElementById('moveDice');
 
     let canRollDice = true
+    let isModalDisplayed = false
+    let isDiceRolling = false
+    let isFetchingQuestion = false
 
     diceBtn.addEventListener('click', (e) => {
-        if (canRollDice) {
+        if (!isDiceRolling && !isModalDisplayed && canRollDice) {
             moveDice.className = '';
             moveDice.classList.add('spin-dice');
+            isDiceRolling = true
 
             e.preventDefault();
             const dice1 = rollDice();
@@ -249,11 +253,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
             diceBtn.disabled = true
             questionBtn.disabled  = false
             canRollDice = false
+            isDiceRolling = false
         }, 2000)
     };
 })
-
-
 
 function displayQuestionModal(image, correctCountry) {
     const modal = document.getElementById("myModal");
@@ -266,6 +269,8 @@ function displayQuestionModal(image, correctCountry) {
     questionImageElement.src = image
 
     modal.style.display = "block";
+
+    isModalDisplayed = true
 
     closeBtn.onclick = function () {
         modal.style.display = "none";
@@ -289,11 +294,13 @@ function rollDice() {
 function closeModal() {
     const modal = document.getElementById("myModal");
     modal.style.display = "none";
+    isModalDisplayed = false
   }
 
 function handleAnswerSubmission(correctCountry) {
     const answerInput = document.getElementById("answer");
     const answer = answerInput.value.trim().toLowerCase();
+
   
     if (answer === correctCountry.toLowerCase()) {
       closeModal();
@@ -313,10 +320,11 @@ const questionBtn = document.getElementById('question-btn')
 const diffDice = document.getElementById('diffDice');
 
 questionBtn.addEventListener('click', (e) => {
-    if (!questionBtn.disabled) {
+    if (!isFetchingQuestion && !questionBtn.disabled) {
 
     diffDice.className = '';
     diffDice.classList.add('spin-dice');
+    isFetchingQuestion = true
 
     e.preventDefault();
     const dice2 = rollDice();
@@ -366,12 +374,14 @@ questionBtn.addEventListener('click', (e) => {
              diceBtn.disabled = false
              questionBtn.disabled = true
              canRollDice = true
+             isFetchingQuestion = false
         })
         .catch((error) => {
             console.error("Error fetching question: ", error)
             diceBtn.disabled = false
             questionBtn.disabled = true
             canRollDice = true
+            isFetchingQuestion = false
             });
         }, 2000)
       }
