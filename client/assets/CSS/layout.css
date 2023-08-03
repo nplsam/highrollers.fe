@@ -24,6 +24,16 @@ header {
     padding-bottom: 10px;
 }
 
+#home a {
+    text-decoration: none;
+    color: #FFFDF8;
+}
+
+#home a:visited {
+    text-decoration: none;
+    color: #FFFDF8;
+}
+
 h1 {
     font-family: 'Luckiest Guy', cursive;
     font-size: 8rem;
@@ -59,6 +69,20 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.modal-header {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Luckiest Guy', cursive;
+}
+
+h4 {
+    font-family: 'Luckiest Guy', cursive;
 }
 
 footer {
