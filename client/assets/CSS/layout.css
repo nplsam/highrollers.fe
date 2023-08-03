@@ -24,6 +24,16 @@ header {
     padding-bottom: 10px;
 }
 
+#home a {
+    text-decoration: none;
+    color: #FFFDF8;
+}
+
+#home a:visited {
+    text-decoration: none;
+    color: #FFFDF8;
+}
+
 h1 {
     font-family: 'Luckiest Guy', cursive;
     font-size: 8rem;
