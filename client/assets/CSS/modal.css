@@ -1,20 +1,24 @@
 #myModal {
-    width: 400px; 
-    max-width: 80%; 
+    width: 500px; 
+    max-width: 100%; 
     height: auto;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); 
-    padding: 0;
-    margin: 0;
     z-index: 999;
   }
+  
+.modal-content {
+  padding: 20px;
+  text-align: center;
+  background-color: #FFFDFA;
+  border: solid #FF6B35;
+  border-radius: 15px;
+}
 
 #question {
-    margin-top: 20px;
-    font-size: 18px;
+    font-size: 1.3rem;
     font-weight: bold;
-    text-align: center;
   }
 
 #questionImage {
@@ -22,26 +26,36 @@
     height: auto;
     display: block;
     margin: 10px auto;
-  }
+}
 
-  #resultModal {
-    display: none;
-    position: fixed; 
-    z-index: 1; 
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4); 
-  }
+#answer {
+  width: 20rem;
+  margin: 10px auto;
+}
+
+#submitAnswer {
+  width: 20rem;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+#resultModal {
+  display: none;
+  position: fixed; 
+  z-index: 1; 
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
   
 .result-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 400px;
+  width: 80%;
+  max-width: 400px;
+  margin: 15% auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #FFFDFA;
+  border: solid #FF6B35;
+  border-radius: 15px;
 }
 
