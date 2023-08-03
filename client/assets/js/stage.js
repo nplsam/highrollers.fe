@@ -363,6 +363,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
         } else {
           closeModal()
           showResultModal(false)
+         const moveBack = move;
+         for(let i = 0; i < moveBack; i++){
+             player.revert();
+        }
         }
         answerInput.value = "";
         if (!questionBtn.disabled) {
@@ -447,9 +451,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // revertBtn.addEventListener('click', (e) => {
 
     //     e.preventDefault();
-    //     const moveBack = move;
-    //     for(let i = 0; i < moveBack; i++){
-    //         player.revert();
-    //     }
+
     // })
 
