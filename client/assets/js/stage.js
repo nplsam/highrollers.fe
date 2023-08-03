@@ -31,6 +31,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let tutorial_canvas = document.getElementById("gameCanvas");
     let tutorial_canvas_context = tutorial_canvas.getContext('2d');
 
+    let winModal = document.getElementById('playAgain');
+
     tutorial_canvas.style.background = "#000000"
 
 
@@ -166,8 +168,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                         this.moves--;
                         break;
                     case this.boardCount > 35:
-                        console.log('GAME WON');
-                        alert('GAME WON');
+                        winModal.classList.remove('hidden');
                         this.moves = 0;
                 }
             }
