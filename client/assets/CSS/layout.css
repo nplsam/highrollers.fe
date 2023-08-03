@@ -55,6 +55,10 @@ main {
     margin: 25px;
 }
 
+h2 {
+    font-family: 'Luckiest Guy', cursive;
+}
+
 #logo {
     display: flex;
     align-items: center;
