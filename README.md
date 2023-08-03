@@ -13,16 +13,16 @@
 
 ## Installation for the Client Side
 - Clone the [Client Side Repo](https://github.com/nplsam/highrollers.fe)
-- cd into the client folder.
-- npm i to install all the necessary packages.
+- `cd` into the client folder.
+- `npm i` to install all the necessary packages.
 - Open index.html with the browser of your choice to see the app running. 
 - If changes are made to the code, run npm run dev to bundle all changes.
 
 ## Installation for the Server Side
 - Clone the [Server Side Repo](https://github.com/nplsam/highrollers.be)
-- cd into server
-- npm i to install all the necessary packages.
-- npm run dev to start the server.
+- `cd` into server
+- `npm i` to install all the necessary packages.
+- `npm run dev` to start the server.
 - test endpoints by appending queries to localhost:3000
 
 
