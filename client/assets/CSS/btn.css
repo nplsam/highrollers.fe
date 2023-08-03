@@ -15,7 +15,7 @@
     color: #FFFDF8;
 }
 
-#dice-btn {
+#dice-btn, #question-btn {
     border-radius: 15px;
     border: none;
     width: 30rem;
@@ -24,22 +24,11 @@
     font-family: 'Luckiest Guy', cursive;
     color: #FFFDF8;
     font-size: 4rem;
+    margin-bottom: 20px;
 }
 
 #dice-btn:hover {
     background-color: #DD1C1A;
-}
-
-#question-btn {
-    margin-top: 15px;
-    border-radius: 15px;
-    border: none;
-    width: 15rem;
-    height: 3rem;
-    background-color: #FF6B35;
-    font-family: 'Luckiest Guy', cursive;
-    color: #FFFDF8;
-    font-size: 1.9rem;
 }
 
 #question-btn:hover {
